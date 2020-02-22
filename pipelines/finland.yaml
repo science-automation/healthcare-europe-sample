@@ -29,7 +29,7 @@ steps:
     ls
     cp -R ../synthea-international/fi/* .
     ls
-    ./gradlew build
+    ./gradlew build -x test
   displayName: 'Build Synthea for country'
 - script: |
     cd s/synthea/
