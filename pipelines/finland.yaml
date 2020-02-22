@@ -28,6 +28,7 @@ steps:
     echo $LANG
     cd /home/vsts/work/1/s/synthea
     cp -R ../synthea-international/fi/* .
+    export GRADLE_OPTS="-Dfile.encoding=utf-8"
     ./gradlew build -x test
     javac -version
     java -version
