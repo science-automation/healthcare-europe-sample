@@ -10,10 +10,16 @@ pool:
   vmImage: 'ubuntu-latest'
 
 steps:
-- script: echo Hello, world!
-  displayName: 'Run a one-line script'
+- checkout: github://synthetichealth/synthea
+
+- checkout: github://synthetichealth/synthea-international
 
 - script: |
-    echo Add other tasks to build, test, and deploy your project.
-    echo See https://aka.ms/yaml
+    cd synthetichealth/synthea/
+    cp -R ../synthea-international/fi/*
+    echo "java version"
+    java --version
+    echo "python version"
+    python --version
+    echo Now run the build
   displayName: 'Run a multi-line script'
