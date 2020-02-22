@@ -28,7 +28,7 @@ steps:
 - checkout: self
 - checkout: synthea
 - checkout: synthea-international
-- checkout  healthcare-europe-sample-storage
+- checkout: healthcare-europe-sample-storage
 - script: |
     cd /home/vsts/work/1/s/synthea
     # temp file some values in synthea.properties
