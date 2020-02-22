@@ -32,6 +32,7 @@ steps:
     ./gradlew build -x test
     javac -version
     java -version
+    which java
   displayName: 'Build Synthea for country'
 - script: |
     cd /home/vsts/work/1/s/synthea
