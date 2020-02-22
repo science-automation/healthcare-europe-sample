@@ -1,4 +1,5 @@
 #i!/bin/bash
+set -x
 
 BASEDIR=$(dirname "$0")
 export BASEDIR
