@@ -40,27 +40,7 @@ steps:
   displayName: 'Build Synthea for country'
 - script: |
     cd /home/vsts/work/1/s/synthea
-    # run for base case with all modules
-    ./run_synthea -p 100 Uusimma
-    cd ./output/csv
-    zip ../all_csv.zip *.csv
-    cd ../..
-    cd ./output/fhir
-    zip ../all_fhir.zip *.json
-    cd ../..
-
-    for filename in $BASEDIR/build/resources/main/modules/*.json; do
-        module=$(basename "$filename" .json)
-        rm ./output/csv/*
-        rm ./output/fhir/*
-        ./run_synthea -p 100 -m $module Uusimma
-        cd ./output/csv
-        zip ../${module}_csv.zip *.csv
-        cd ../..
-        cd ./output/fhir
-        zip ../${module}_fhir.zip *.json
-        cd ../..
-    done
+    ./run_synthea -p 5 Uusimma
   displayName: 'Run synthea for country'
   #- script: |
   #  cd /home/vsts/work/1/s/synthea
