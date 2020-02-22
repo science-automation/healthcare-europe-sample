@@ -29,6 +29,7 @@ steps:
     sudo apt-add-repository "deb http://repos.azul.com/azure-only/zulu/apt stable main"
     sudo apt-get -q update
     sudo apt-get -y install zulu-11-azure-jdk
+    find / -name "*11*" -print
   displayName: 'Install JDK 11'
 - script: |
     echo $LANG
