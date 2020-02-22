@@ -45,7 +45,7 @@ steps:
     ./run.sh /home/vsts/work/1/s/synthea
     ls output
   displayName: 'Run synthea for country'
-  - script: |
+- script: |
     cd /home/vsts/work/1/s/synthea
     mkdir -p ../healthcare-europe-sample-storage/fi
     cp output/* ../healthcare-europe-sample-storage/fi
