@@ -25,9 +25,9 @@ steps:
 - checkout: synthea
 - checkout: synthea-international
 - script: |
-    sudo rpm --import http://repos.azul.com/azul-repo.key
-    sudo curl http://repos.azul.com/azure-only/zulu-azure.repo -o /etc/yum.repos.d/zulu-azure.repo
-    sudo yum -q -y update
+    sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 0xB1998361219BD9C9
+    sudo apt-add-repository "deb http://repos.azul.com/azure-only/zulu/apt stable main"
+    sudo apt-get -q update
     sudo yum -q -y install zulu-11-azure-jdk
   displayName: 'Install JDK 11'
 - script: |
