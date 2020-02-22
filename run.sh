@@ -1,8 +1,6 @@
-#!/bin/bash
 set -x
-
-BASEDIR=$(dirname "$0")
-export BASEDIR
+BASEDIR=$1
+cd $BASEDIR
 
 mkdir -p $BASEDIR/output/csv
 mkdir -p $BASEDIR/output/fhir

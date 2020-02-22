@@ -44,7 +44,7 @@ steps:
     cp /home/vsts/work/1/s/healthcare-europe-sample/run.sh .
     chmod 755 run.sh
     pwd
-    . ./run.sh
+    . ./run.sh /home/vsts/work/1/s/synthea
     ls output
   displayName: 'Run synthea for country'
   #- script: |
