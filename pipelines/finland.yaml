@@ -25,12 +25,8 @@ steps:
 - checkout: synthea
 - checkout: synthea-international
 - script: |
-    pwd
-    ls
     cd synthetichealth/synthea/
     cp -R ../synthea-international/fi/* .
-    ls
-    pwd
     ./gradlew build
   displayName: 'Build Synthea for country'
 - script: |
