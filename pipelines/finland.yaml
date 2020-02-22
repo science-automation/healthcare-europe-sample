@@ -26,10 +26,10 @@ steps:
 - checkout: synthea-international
 - script: |
     cd synthetichealth/synthea/
-    cp -R ../synthea-international/fi/*
-    echo "java version"
-    java --version
-    echo "python version"
-    python --version
-    echo Now run the build
-  displayName: 'Run a multi-line script'
+    cp -R ../synthea-international/fi/* .
+    ./gradlew build
+  displayName: 'Build Synthea for country'
+- script: |
+    cd synthetichealth/synthea/
+    ./run_synthea -p 5 "Uusimaa"
+  displayName: 'Run synthea for country'
