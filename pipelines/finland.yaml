@@ -27,6 +27,7 @@ steps:
 - script: |
     cd /home/vsts/work/1/s/synthea-international
     cp -R ../synthea-international/fi/* .
+    ls
     ./gradlew build
   displayName: 'Build Synthea for country'
 - script: |
