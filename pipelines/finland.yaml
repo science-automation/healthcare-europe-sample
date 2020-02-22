@@ -25,6 +25,7 @@ steps:
 - checkout: synthea
 - checkout: synthea-international
 - script: |
+    find /usr -name "javac" -print
     echo $LANG
     export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64
     PATH=/usr/lib/jvm/java-11-openjdk-amd64/bin:$PATH
