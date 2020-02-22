@@ -54,5 +54,5 @@ steps:
     git config --global user.name "scivm"
     git add .
     git commit -m "generated from automation [skip ci]"
-    git push origin HEAD:master
+    git push https://scivm:$GITPASS@science-automation/healthcare-europe-sample-storage/file.git
   displayName: "Check files into git storage"
