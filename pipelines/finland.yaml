@@ -13,6 +13,10 @@ resources:
       type: github
       endpoint: science-automation
       name: synthetichealth/synthea-international
+    - repository: healthcare-europe-sample-storage
+      type: github
+      endpoint: science-automation
+      name: science-automation/healthcare-europe-sample-storage
 
 trigger:
 - master
@@ -24,12 +28,13 @@ steps:
 - checkout: self
 - checkout: synthea
 - checkout: synthea-international
+- checkout  healthcare-europe-sample-storage
 - script: |
     cd /home/vsts/work/1/s/synthea
     # temp file some values in synthea.properties
     echo "exporter.encoding = UTF-8" >> ../synthea-international/fi/src/main/resources/synthea.properties
-    sed -i 'exporter.fhir.export = false/exporter.fhir.export = true/g'../synthea-international/fi/src/main/resources/synthea.properties
-    sed -i 'exporter.hospital.fhir.export = false/exporter.hospital.fhir.export = true/g' ../synthea-international/fi/src/main/resources/synthea.properties
+    sed -i 's/exporter.fhir.export = false/exporter.fhir.export = true/g'../synthea-international/fi/src/main/resources/synthea.properties
+    sed -i 's/exporter.hospital.fhir.export = false/exporter.hospital.fhir.export = true/g' ../synthea-international/fi/src/main/resources/synthea.properties
     cp -R ../synthea-international/fi/* .
     ./gradlew build -x test
   displayName: 'Build Synthea for country'
@@ -40,3 +45,12 @@ steps:
     ./run.sh
     ls output
   displayName: 'Run synthea for country'
+- script: |
+    cd /home/vsts/work/1/s/synthea
+    mkdir -p ../healthcare-europe-sample-storage/fi
+    cp output/* ../healthcare-europe-sample-storage/fi
+    cd ../healthcare-europe-sample-storage/fi
+    git add .
+    git commit -m "automated run"
+    git push
+  displayName: "Check files into git storage"
