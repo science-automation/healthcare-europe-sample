@@ -40,14 +40,15 @@ steps:
   displayName: 'Build Synthea for country'
 - script: |
     cd /home/vsts/work/1/s/synthea
-    ./run_synthea -p 5 Uusimma
+    cp /home/vsts/work/1/s/healthcare-europe-sample/run.sh .
+    chmod 755 run.sh
+    ./run.sh
   displayName: 'Run synthea for country'
   #- script: |
   #  cd /home/vsts/work/1/s/synthea
   #  mkdir -p ../healthcare-europe-sample-storage/fi
   #  cp output/* ../healthcare-europe-sample-storage/fi
-  #  cd ../healthcare-europe-sample-storage
-  #  git pull
+  #  cd ../healthcare-europe-sample-storage/fi
   #  git config --global user.name "scivm"
   #  git add .
   #  git commit -m "automated run"
