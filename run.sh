@@ -1,4 +1,3 @@
-#i!/bin/bash
 set -x
 
 BASEDIR=$(dirname "$0")
@@ -7,13 +6,13 @@ export BASEDIR
 mkdir -p $BASEDIR/output/csv
 mkdir -p $BASEDIR/output/fhir
 
-# run for base case
+# run for base case with all modules
 ./run_synthea -p 100 "Uusimma"
 cd ./output/csv
 zip ../all_csv.zip *.csv
 cd ../..
 cd ./output/fhir
-zip ../all_fhir.zip 
+zip ../all_fhir.zip *.json
 cd ../..
 
 mkdir -p $BASEDIR/output/csv
