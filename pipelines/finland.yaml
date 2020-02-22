@@ -33,16 +33,20 @@ steps:
   displayName: 'Install JDK 11'
 - script: |
     echo $LANG
+    export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64
+    PATH=/usr/lib/jvm/java-11-openjdk-amd64/bin:$PATH
     cd /home/vsts/work/1/s/synthea
     cp -R ../synthea-international/fi/* .
-    export GRADLE_OPTS="-Dfile.encoding=UTF-8"
+    #export GRADLE_OPTS="-Dfile.encoding=UTF-8"
     ./gradlew build -x test
     javac -version
     java -version
     which java
   displayName: 'Build Synthea for country'
 - script: |
+    export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64
+    PATH=/usr/lib/jvm/java-11-openjdk-amd64/bin:$PATH
     cd /home/vsts/work/1/s/synthea
-    export GRADLE_OPTS="-Dfile.encoding=UTF-8"
+    #export GRADLE_OPTS="-Dfile.encoding=UTF-8"
     ./run_synthea -p 5 "Uusimaa"
   displayName: 'Run synthea for country'
