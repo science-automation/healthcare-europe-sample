@@ -46,9 +46,9 @@ steps:
   displayName: 'Run synthea for country'
   - script: |
     cd /home/vsts/work/1/s/synthea
-    mkdir -p ../healthcare-europe-sample-storage/%COUNTRY%
-    cp output/* ../healthcare-europe-sample-storage/%COUNTRY%
-    cd ../healthcare-europe-sample-storage/%COUNTRY%
+    mkdir -p ../healthcare-europe-sample-storage/$COUNTRY
+    cp output/* ../healthcare-europe-sample-storage/$COUNTRY
+    cd ../healthcare-europe-sample-storage/$COUNTRY
     git config --global user.name "scivm"
     git add .
     git commit -m "automated run"
