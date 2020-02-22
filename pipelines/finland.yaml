@@ -43,7 +43,7 @@ steps:
     ./run_synthea -p 5 Uusimaa
     cp /home/vsts/work/1/s/healthcare-europe-sample/run.sh .
     chmod 755 run.sh
-    ./run.sh
+    /bin/bash --noprofile --norc ./run.sh
     ls output
   displayName: 'Run synthea for country'
   #- script: |
