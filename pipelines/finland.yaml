@@ -29,6 +29,7 @@ steps:
 - checkout: synthea
 - checkout: synthea-international
 - checkout: healthcare-europe-sample-storage
+  persistCredentials: true
 - script: |
     cd /home/vsts/work/1/s/synthea
     # temp file some values in synthea.properties
@@ -48,10 +49,10 @@ steps:
 - script: |
     cd /home/vsts/work/1/s/synthea
     mkdir -p ../healthcare-europe-sample-storage/fi
-    cp output/* ../healthcare-europe-sample-storage/fi
+    cp output/*.zip ../healthcare-europe-sample-storage/fi
     cd ../healthcare-europe-sample-storage/fi
     git config --global user.name "scivm"
     git add .
-    git commit -m "generated from automation"
+    git commit -m "generated from automation [skip ci]"
     git push origin HEAD:master
   displayName: "Check files into git storage"
