@@ -45,13 +45,13 @@ steps:
     ./run.sh /home/vsts/work/1/s/synthea
     ls output
   displayName: 'Run synthea for country'
-  #- script: |
-  #  cd /home/vsts/work/1/s/synthea
-  #  mkdir -p ../healthcare-europe-sample-storage/fi
-  #  cp output/* ../healthcare-europe-sample-storage/fi
-  #  cd ../healthcare-europe-sample-storage/fi
-  #  git config --global user.name "scivm"
-  #  git add .
-  #  git commit -m "automated run"
-  #  git push origin HEAD:master
-  #displayName: "Check files into git storage"
+  - script: |
+    cd /home/vsts/work/1/s/synthea
+    mkdir -p ../healthcare-europe-sample-storage/fi
+    cp output/* ../healthcare-europe-sample-storage/fi
+    cd ../healthcare-europe-sample-storage/fi
+    git config --global user.name "scivm"
+    git add .
+    git commit -m "generated from automation"
+    git push origin HEAD:master
+  displayName: "Check files into git storage"
