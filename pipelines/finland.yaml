@@ -33,6 +33,3 @@ steps:
     cd synthetichealth/synthea/
     ./run_synthea -p 5 "Uusimaa"
   displayName: 'Run synthea for country'
-- script |
-    echo "test"
-  displayName: 'Test'
