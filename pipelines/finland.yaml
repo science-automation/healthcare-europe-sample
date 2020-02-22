@@ -3,6 +3,17 @@
 # Add steps that build, run tests, deploy, and more:
 # https://aka.ms/yaml
 
+resources:
+  repositories:
+    - repository: synthea
+      type: github
+      endpoint: github
+      name: synthetichealth/synthea
+    - repository: synthea-international
+      type: github
+      endpoint: github
+      name: synthetichealth/synthea-international
+
 trigger:
 - master
 
@@ -10,10 +21,9 @@ pool:
   vmImage: 'ubuntu-latest'
 
 steps:
-- checkout: github://synthetichealth/synthea
-
-- checkout: github://synthetichealth/synthea-international
-
+- checkout: self
+- checkout: synthea
+- checkout: synthea-international
 - script: |
     cd synthetichealth/synthea/
     cp -R ../synthea-international/fi/*
