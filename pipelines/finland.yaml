@@ -25,7 +25,12 @@ steps:
 - checkout: synthea
 - checkout: synthea-international
 - script: |
-    sudo apt-add-repository ppa:git-core/ppa
+    sudo rpm --import http://repos.azul.com/azul-repo.key
+    sudo curl http://repos.azul.com/azure-only/zulu-azure.repo -o /etc/yum.repos.d/zulu-azure.repo
+    sudo yum -q -y update
+    sudo yum -q -y install zulu-11-azure-jdk
+  displayName: 'Install JDK 11'
+- script: |
     echo $LANG
     cd /home/vsts/work/1/s/synthea
     cp -R ../synthea-international/fi/* .
