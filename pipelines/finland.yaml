@@ -25,6 +25,7 @@ steps:
 - checkout: synthea
 - checkout: synthea-international
 - script: |
+    sudo apt-add-repository ppa:git-core/ppa
     echo $LANG
     cd /home/vsts/work/1/s/synthea
     cp -R ../synthea-international/fi/* .
