@@ -7,11 +7,11 @@ resources:
   repositories:
     - repository: synthea
       type: github
-      endpoint: github
+      endpoint: science-automation
       name: synthetichealth/synthea
     - repository: synthea-international
       type: github
-      endpoint: github
+      endpoint: science-automation
       name: synthetichealth/synthea-international
 
 trigger:
