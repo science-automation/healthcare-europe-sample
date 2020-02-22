@@ -25,13 +25,6 @@ steps:
 - checkout: synthea
 - checkout: synthea-international
 - script: |
-    sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 0xB1998361219BD9C9
-    sudo apt-add-repository "deb http://repos.azul.com/azure-only/zulu/apt stable main"
-    sudo apt-get -q update
-    sudo apt-get -y install zulu-11-azure-jdk
-    find / -name "*11*" -print
-  displayName: 'Install JDK 11'
-- script: |
     echo $LANG
     export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64
     PATH=/usr/lib/jvm/java-11-openjdk-amd64/bin:$PATH
