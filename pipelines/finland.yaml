@@ -25,7 +25,7 @@ steps:
 - checkout: synthea
 - checkout: synthea-international
 - script: |
-    cd s/synthea/
+    cd /home/vsts/work/1/s/synthea-international
     cp -R ../synthea-international/fi/* .
     ./gradlew build
   displayName: 'Build Synthea for country'
