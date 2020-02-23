@@ -26,6 +26,7 @@ pool:
 
 steps:
 - checkout: self
+  persistCredentials: true
 - checkout: synthea
   fetchDepth: 1
   clean: true
@@ -33,6 +34,13 @@ steps:
 - checkout: healthcare-europe-sample-storage
   fetchDepth: 1
   clean: true
+- scripts |
+    cd /home/vsts/work/1/s/healthcare-europe-sample
+    echo "test" > testfile
+    git config --global user.name "scivm" 
+    git add .
+    git commit -m "generated from automation [skip ci]"
+    git push origin master
 - script: |
     cd /home/vsts/work/1/s/synthea
     # temp file some values in synthea.properties
