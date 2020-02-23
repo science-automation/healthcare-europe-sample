@@ -27,9 +27,12 @@ pool:
 steps:
 - checkout: self
 - checkout: synthea
+  fetchDepth: 1
+  clean: true
 - checkout: synthea-international
 - checkout: healthcare-europe-sample-storage
-  persistCredentials: true
+  fetchDepth: 1
+  clean: true
 - script: |
     cd /home/vsts/work/1/s/synthea
     # temp file some values in synthea.properties
@@ -58,5 +61,5 @@ steps:
     cd ../healthcare-europe-sample-storage/fi
     git add .
     git commit -m "generated from automation [skip ci]"
-    git push https://scivm:$GITPASS@github.com/science-automation/healthcare-europe-sample-storage/file.git HEAD:fi
+    git push https://scivm:$GITPASS@github.com/science-automation/healthcare-europe-sample-storage HEAD:fi
   displayName: "Check files into git storage"
