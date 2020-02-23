@@ -34,14 +34,14 @@ steps:
 - checkout: healthcare-europe-sample-storage
   fetchDepth: 1
   clean: true
-- script: |
-    cd /home/vsts/work/1/s/healthcare-europe-sample
-    echo "test" > testfile
-    git config --global user.name "scivm" 
-    git add .
-    git commit -m "generated from automation [skip ci]"
-    git push origin HEAD:master
-  displayName: 'test pushing file'  
+  #- script: |
+  #  cd /home/vsts/work/1/s/healthcare-europe-sample
+  #  echo "test" > testfile
+  #  git config --global user.name "scivm" 
+  #  git add .
+  #  git commit -m "generated from automation [skip ci]"
+  #  git push origin HEAD:master
+  #displayName: 'test pushing file'  
 - script: |
     cd /home/vsts/work/1/s/synthea
     # temp file some values in synthea.properties
@@ -66,9 +66,9 @@ steps:
     git branch fi
     git checkout fi
     cd /home/vsts/work/1/s/synthea
-    cp output/*.zip ../healthcare-europe-sample-storage/fi
-    cd ../healthcare-europe-sample-storage/fi
+    cp output/*.zip ../healthcare-europe-sample/fi
+    cd ../healthcare-europe-sample/fi
     git add .
     git commit -m "generated from automation [skip ci]"
-    git push https://scivm:$GITPASS@github.com/science-automation/healthcare-europe-sample-storage HEAD:fi
+    git push origin HEAD:fi
   displayName: "Check files into git storage"
