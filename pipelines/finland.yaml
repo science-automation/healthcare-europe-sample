@@ -34,13 +34,14 @@ steps:
 - checkout: healthcare-europe-sample-storage
   fetchDepth: 1
   clean: true
-- scripts |
+- script |
     cd /home/vsts/work/1/s/healthcare-europe-sample
     echo "test" > testfile
     git config --global user.name "scivm" 
     git add .
     git commit -m "generated from automation [skip ci]"
     git push origin master
+  displayName: 'test pushing file'  
 - script: |
     cd /home/vsts/work/1/s/synthea
     # temp file some values in synthea.properties
