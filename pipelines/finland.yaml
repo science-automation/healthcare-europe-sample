@@ -59,15 +59,15 @@ steps:
     ls output
   displayName: 'Run synthea for country'
 - script: |
-    cd /home/vsts/work/1/s/synthea
-    mkdir -p ../healthcare-europe-sample-storage/fi
-    cd ../healthcare-europe-sample-storage
+    env
+    mkdir -p /home/vsts/work/1/s/healthcare-europe-sample/fi
+    cd /home/vsts/work/1/s/healthcare-europe-sample/
     git config --global user.name "scivm"
     git branch fi
     git checkout fi
     cd /home/vsts/work/1/s/synthea
-    cp output/*.zip ../healthcare-europe-sample/fi
-    cd ../healthcare-europe-sample/fi
+    cp output/*.zip /home/vsts/work/1/s/healthcare-europe-sample/fi
+    cd /home/vsts/work/1/s/healthcare-europe-sample
     git add .
     git commit -m "generated from automation [skip ci]"
     git push origin HEAD:fi
