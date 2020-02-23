@@ -26,31 +26,41 @@ pool:
 
 steps:
 - checkout: self
+  persistCredentials: true
 - checkout: synthea
+  fetchDepth: 1
+  clean: true
 - checkout: synthea-international
 - checkout: healthcare-europe-sample-storage
+  fetchDepth: 1
+  clean: true
 - script: |
-    cd /home/vsts/work/1/s/synthea
+    cd ${AGENT_BUILDDIRECTORY}/s/synthea
     # temp file some values in synthea.properties
     echo "exporter.encoding = UTF-8" >> ../synthea-international/fi/src/main/resources/synthea.properties
     sed -i 's/exporter.fhir.export = false/exporter.fhir.export = true/g'../synthea-international/fi/src/main/resources/synthea.properties
     sed -i 's/exporter.hospital.fhir.export = false/exporter.hospital.fhir.export = true/g' ../synthea-international/fi/src/main/resources/synthea.properties
+    sed -i 's/exporter.fhir.transaction_bundle = false/exporter.fhir.transaction_bundle = true/g' ../synthea-international/fi/src/main/resources/synthea.properties
+    sed -i 's/exporter.practitioner.fhir.export = false/exporter.practitioner.fhir.export = true/g' ../synthea-international/fi/src/main/resources/synthea.properties
     cp -R ../synthea-international/fi/* .
     ./gradlew build -x test
   displayName: 'Build Synthea for country'
 - script: |
-    cd /home/vsts/work/1/s/synthea
-    cp /home/vsts/work/1/s/healthcare-europe-sample/run.sh .
+    cd ${AGENT_BUILDDIRECTORY}/s/synthea
+    cp ${AGENT_BUILDDIRECTORY}/s/healthcare-europe-sample/run.sh .
     chmod 755 run.sh
-    ./run.sh /home/vsts/work/1/s/synthea
+    ./run.sh ${AGENT_BUILDDIRECTORY}/s/synthea
   displayName: 'Run synthea for country'
-  - script: |
-    cd /home/vsts/work/1/s/synthea
-    mkdir -p ../healthcare-europe-sample-storage/$COUNTRY
-    cp output/* ../healthcare-europe-sample-storage/$COUNTRY
-    cd ../healthcare-europe-sample-storage/$COUNTRY
+- script: |
+    mkdir -p ${AGENT_BUILDDIRECTORY}/s/healthcare-europe-sample/$COUNTRY
+    cd ${AGENT_BUILDDIRECTORY}/s/healthcare-europe-sample/
     git config --global user.name "scivm"
+    git branch $COUNTRY
+    git checkout $COUNTRY
+    cd ${AGENT_BUILDDIRECTORY}/s/synthea
+    cp output/*.zip ${AGENT_BUILDDIRECTORY}/s/healthcare-europe-sample/$COUNTRY
+    cd ${AGENT_BUILDDIRECTORY}/s/healthcare-europe-sample
     git add .
-    git commit -m "automated run"
-    git push origin HEAD:master
+    git commit -m "generated from automation [skip ci]"
+    git push origin HEAD:$COUNTRY
   displayName: "Check files into git storage"
