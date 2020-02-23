@@ -34,7 +34,7 @@ steps:
 - checkout: healthcare-europe-sample-storage
   fetchDepth: 1
   clean: true
-- script |
+- script: |
     cd /home/vsts/work/1/s/healthcare-europe-sample
     echo "test" > testfile
     git config --global user.name "scivm" 
