@@ -40,7 +40,7 @@ steps:
     git config --global user.name "scivm" 
     git add .
     git commit -m "generated from automation [skip ci]"
-    git push origin master
+    git push origin HEAD:master
   displayName: 'test pushing file'  
 - script: |
     cd /home/vsts/work/1/s/synthea
