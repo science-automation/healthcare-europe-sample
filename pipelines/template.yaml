@@ -57,6 +57,8 @@ steps:
     git config --global user.name "scivm"
     git branch $COUNTRY
     git checkout $COUNTRY
+    git branch --set-upstream-to=origin/$COUNTRY $COUNTRY
+    git pull    
     cd ${AGENT_BUILDDIRECTORY}/s/synthea
     cp output/*.zip ${AGENT_BUILDDIRECTORY}/s/healthcare-europe-sample/$COUNTRY
     cd ${AGENT_BUILDDIRECTORY}/s/healthcare-europe-sample
