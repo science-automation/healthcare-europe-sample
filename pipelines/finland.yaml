@@ -58,5 +58,5 @@ steps:
     cd ../healthcare-europe-sample-storage/fi
     git add .
     git commit -m "generated from automation [skip ci]"
-    git push https://scivm:$GITPASS@science-automation/healthcare-europe-sample-storage/file.git HEAD:fi
+    git push https://scivm:$GITPASS@github.com/science-automation/healthcare-europe-sample-storage/file.git HEAD:fi
   displayName: "Check files into git storage"
