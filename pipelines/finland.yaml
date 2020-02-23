@@ -49,10 +49,14 @@ steps:
 - script: |
     cd /home/vsts/work/1/s/synthea
     mkdir -p ../healthcare-europe-sample-storage/fi
+    cd ../healthcare-europe-sample-storage
+    git config --global user.name "scivm"
+    git branch fi
+    git checkout fi
+    cd /home/vsts/work/1/s/synthea
     cp output/*.zip ../healthcare-europe-sample-storage/fi
     cd ../healthcare-europe-sample-storage/fi
-    git config --global user.name "scivm"
     git add .
     git commit -m "generated from automation [skip ci]"
-    git push https://scivm:$GITPASS@science-automation/healthcare-europe-sample-storage/file.git HEAD:master
+    git push https://scivm:$GITPASS@science-automation/healthcare-europe-sample-storage/file.git HEAD:fi
   displayName: "Check files into git storage"
