@@ -17,6 +17,11 @@ for file in files:
     modules.append(os.path.splitext(file)[0])
 print(modules)    
 
+# open file for writing markup file
+os.chdir(basedir + '/s/synthea/output')
+file = open("README.md","w") 
+file.write("Download files\n")
+
 for module in modules:
     # cleanup previous synthea run
     os.chdir(basedir + '/s/synthea')
@@ -47,3 +52,10 @@ for module in modules:
     os.system("zip ../" + module + "_csv.zip *.csv")
     os.chdir(basedir + '/s/synthea/output/fhir')
     os.system("zip ../" + module + "_fhir.zip *.csv")
+    # write the links for this module
+    synthea_fhir = "[synthea fhir](https://github.com/science-automation/healthcare-europe-sample/blob/fi/fi/" + module + "_synthea_fhir.zip)"
+    synthea_csv = "[synthea csv](https://github.com/science-automation/healthcare-europe-sample/blob/fi/fi/" + module + "_synthea_csv.zip)"
+    omop_cdm531 = "[OMOP 5.3.1](https://github.com/science-automation/healthcare-europe-sample/blob/fi/fi/" + module + "_omop_531.zip)"
+    omop_cdm6 = "[OMOP 6](https://github.com/science-automation/healthcare-europe-sample/blob/fi/fi/" + module + "_omop6.zip)"
+    file.write(module + ": " + synthea_fhir + synthea_csv + omop_cdm531 + omop_cdm6 + "\n")
+file.close()

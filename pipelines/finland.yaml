@@ -70,20 +70,21 @@ steps:
     cd ${AGENT_BUILDDIRECTORY}/s/healthcare-europe-sample
     python ./run.py ${AGENT_BUILDDIRECTORY}
   displayName: 'Run Synthea, Synthea->OMOP 5.3, Synthea->OMOP 6 for country'
-#- script: |
-#    mkdir -p ${AGENT_BUILDDIRECTORY}/s/healthcare-europe-sample/fi
-#    cd ${AGENT_BUILDDIRECTORY}/s/healthcare-europe-sample/
-#    git config --global user.name "scivm"
-#    git branch fi
-#    git checkout fi
-#    git branch --set-upstream-to=origin/fi fi
-#    git pull
-#    cd ${AGENT_BUILDDIRECTORY}/s/synthea
-#    cp output/*.zip ${AGENT_BUILDDIRECTORY}/s/healthcare-europe-sample/fi
-#    cd ${AGENT_BUILDDIRECTORY}/s/ETL-Synthea-Python
-#    cp *.zip ${AGENT_BUILDDIRECTORY}/s/healthcare-europe-sample/fi
-#    cd ${AGENT_BUILDDIRECTORY}/s/healthcare-europe-sample
-#    git add .
-#    git commit -m "generated from automation [skip ci]"
-#    git push origin HEAD:fi
-#  displayName: "Check files into git storage"
+- script: |
+    mkdir -p ${AGENT_BUILDDIRECTORY}/s/healthcare-europe-sample/fi
+    cd ${AGENT_BUILDDIRECTORY}/s/healthcare-europe-sample/
+    git config --global user.name "scivm"
+    git branch fi
+    git checkout fi
+    git branch --set-upstream-to=origin/fi fi
+    git pull
+    cd ${AGENT_BUILDDIRECTORY}/s/synthea
+    cp output/*.zip ${AGENT_BUILDDIRECTORY}/s/healthcare-europe-sample/fi
+    cp output/README.md  ${AGENT_BUILDDIRECTORY}/s/healthcare-europe-sample/fi
+    cd ${AGENT_BUILDDIRECTORY}/s/ETL-Synthea-Python
+    cp *.zip ${AGENT_BUILDDIRECTORY}/s/healthcare-europe-sample/fi
+    cd ${AGENT_BUILDDIRECTORY}/s/healthcare-europe-sample
+    git add .
+    git commit -m "generated from automation [skip ci]"
+    git push origin HEAD:fi
+  displayName: "Check files into git storage"
