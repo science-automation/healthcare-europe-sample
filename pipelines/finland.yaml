@@ -44,6 +44,9 @@ steps:
   fetchDepth: 1
   clean: true
 - script: |
+    pip install pandas
+  displayName: 'Install python pandas
+- script: |
     cd ${AGENT_BUILDDIRECTORY}/s/synthea
     # temp file some values in synthea.properties
     echo "exporter.encoding = UTF-8" >> ../synthea-international/fi/src/main/resources/synthea.properties

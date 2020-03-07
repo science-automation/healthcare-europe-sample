@@ -15,7 +15,7 @@ modules=[]
 #modules.append('*')
 #modules.append('cancer*')
 for file in files:
-    modules.append(os.path.basename(file))
+    modules.append(os.path.splitext(file)[0])
 print(modules)    
 
 for module in modules:
