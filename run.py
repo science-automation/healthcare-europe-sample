@@ -24,7 +24,7 @@ print(modules)
 os.mkdir(basedir + '/s/synthea/output')
 os.chdir(basedir + '/s/synthea/output')
 file = open("README.md","w") 
-file.write("# " + country + " Download Page #\n")
+file.write("# " + country.upper() + " Download Page #\n")
 file.write("You can download files by selecting the link\n\n")
 
 for module in modules:
