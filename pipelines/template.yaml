@@ -50,7 +50,7 @@ steps:
 - script: |
     cd ${AGENT_BUILDDIRECTORY}/s/synthea
     # temp file some values in synthea.properties
-    echo "exporter.encoding = UTF-8" >> ../synthea-international/$COUNTRY/src/main/resources/synthea.properties
+    echo "exporter.encoding = UTF-8" >> ../synthea-international/fi/src/main/resources/synthea.properties
     sed -i 's/exporter.fhir.export = false/exporter.fhir.export = true/g'../synthea-international/fi/src/main/resources/synthea.properties
     sed -i 's/exporter.hospital.fhir.export = false/exporter.hospital.fhir.export = true/g' ../synthea-international/fi/src/main/resources/synthea.properties
     sed -i 's/exporter.fhir.transaction_bundle = false/exporter.fhir.transaction_bundle = true/g' ../synthea-international/fi/src/main/resources/synthea.properties
