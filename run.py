@@ -15,12 +15,16 @@ modules=[]
 #modules.append('cancer*')
 for file in files:
     modules.append(os.path.splitext(file)[0])
-print(modules)    
+# remove all USA veteran modules
+modules = [x for x in modules if not 'veteran' in x]
+print(modules)
 
 # open file for writing markup file
+os.mkdir(basedir + '/s/synthea/output')
 os.chdir(basedir + '/s/synthea/output')
 file = open("README.md","w") 
-file.write("Download files\n")
+file.write("# Country Download Page #\n")
+file.write("You can download files by selecting the link\n")
 
 for module in modules:
     # cleanup previous synthea run
