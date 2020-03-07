@@ -1,3 +1,4 @@
+# generate the README.md file
 import os
 
 file = open("README.md","w")
