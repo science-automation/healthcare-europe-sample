@@ -60,7 +60,7 @@ steps:
   displayName: 'Build Synthea for country'
 - script: |
     cd ${AGENT_BUILDDIRECTORY}/s/ETL-Synthea-Python/python_etl
-    echo "BASE_SYNTHEA_INPUT_DIRECTORY=${AGENT_BUILDDIRECTORY}/s/synthea" > .env
+    echo "BASE_SYNTHEA_INPUT_DIRECTORY=${AGENT_BUILDDIRECTORY}/s/synthea/output/csv" > .env
     echo "BASE_OMOP_INPUT_DIRECTORY=${AGENT_BUILDDIRECTORY}/s/ETL-Synthea-Python/vocab/" >> .env
     echo "BASE_OUTPUT_DIRECTORY=${AGENT_BUILDDIRECTORY}/ETL-Synthea-Python/output" >> .env
     echo "INPUT_CHUNK_SIZE=100000000" >> .env
