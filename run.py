@@ -62,6 +62,6 @@ for module in modules:
     synthea_fhir = "[[synthea fhir](https://github.com/science-automation/healthcare-europe-sample/raw/" + country + "/" + country + "/" + module + "_synthea_fhir.zip)]"
     synthea_csv = "[[synthea csv](https://github.com/science-automation/healthcare-europe-sample/raw/" + country + "/" + country + "/" + module + "_synthea_csv.zip)]"
     omop_cdm531 = "[[OMOP 5.3.1](https://github.com/science-automation/healthcare-europe-sample/raw/" + country + "/" + country + "/" + module + "_omop_531.zip)]"
-    omop_cdm6 = "[[OMOP 6](https://github.com/science-automation/healthcare-europe-sample/raw/" + country + "/" + country "/" + module + "_omop_6.zip)]"
+    omop_cdm6 = "[[OMOP 6](https://github.com/science-automation/healthcare-europe-sample/raw/" + country + "/" + country + "/" + module + "_omop_6.zip)]"
     file.write(module + ": " + synthea_fhir + synthea_csv + omop_cdm531 + omop_cdm6 + "\n\n")
 file.close()
