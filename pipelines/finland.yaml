@@ -35,10 +35,14 @@ steps:
   fetchDepth: 1
   clean: true
 - checkout: synthea-international
+  fetchDepth: 1
+  clean: true
 - checkout: healthcare-europe-sample-storage
   fetchDepth: 1
   clean: true
 - checkout: ETL-Synthea-Python
+  fetchDepth: 1
+  clean: true
 - script: |
     cd ${AGENT_BUILDDIRECTORY}/s/synthea
     # temp file some values in synthea.properties
@@ -52,15 +56,13 @@ steps:
   displayName: 'Build Synthea for country'
 - script: |
     cd ${AGENT_BUILDDIRECTORY}/s/ETL-Synthea-Python/python_etl
-    echo "BASE_SYNTHEA_INPUT_DIRECTORY=${AGENT_BUILDDIRECTORY}/s/synthea" > .env
-    echo "BASE_OMOP_INPUT_DIRECTORY=${AGENT_BUILDDIRECTORY}/s/ETL-Synthea-Python/vocab/" >> .env
-    echo "BASE_OUTPUT_DIRECTORY=${AGENT_BUILDDIRECTORY}/ETL-Synthea-Python/output" >> .env
-    echo "INPUT_CHUNK_SIZE=100000000" >> .env
+    #echo "BASE_SYNTHEA_INPUT_DIRECTORY=${AGENT_BUILDDIRECTORY}/s/synthea" > .env
+    #echo "BASE_OMOP_INPUT_DIRECTORY=${AGENT_BUILDDIRECTORY}/s/ETL-Synthea-Python/vocab/" >> .env
+    #echo "BASE_OUTPUT_DIRECTORY=${AGENT_BUILDDIRECTORY}/ETL-Synthea-Python/output" >> .env
+    #echo "INPUT_CHUNK_SIZE=100000000" >> .env
     displayName: 'Prepare Synthea to OMOP for country'
 - script: |
-    cd ${AGENT_BUILDDIRECTORY}/s/synthea
-    cp ${AGENT_BUILDDIRECTORY}/s/healthcare-europe-sample/run.sh .
-    chmod 755 run.sh
+    cd ${AGENT_BUILDDIRECTORY}/s/healthcare-europe-sample
     python ./run.py ${AGENT_BUILDDIRECTORY}
   displayName: 'Run Synthea, Synthea->OMOP 5.3, Synthea->OMOP 6 for country'
 #- script: |
