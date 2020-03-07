@@ -64,6 +64,7 @@ steps:
     echo "BASE_OMOP_INPUT_DIRECTORY=${AGENT_BUILDDIRECTORY}/s/ETL-Synthea-Python/vocab/" >> .env
     echo "BASE_OUTPUT_DIRECTORY=${AGENT_BUILDDIRECTORY}/ETL-Synthea-Python/output" >> .env
     echo "INPUT_CHUNK_SIZE=100000000" >> .env
+    echo "COUNTER_FILE=.counter" >> .env
   displayName: 'Prepare Synthea to OMOP for country'
 - script: |
     cd ${AGENT_BUILDDIRECTORY}/s/healthcare-europe-sample
