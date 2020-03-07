@@ -1,6 +1,6 @@
 import os
 from os import listdir
-from os.path import isfile, join
+from os.path import isdir, isfile, join
 import sys
 
 if len(sys.argv) <2:
@@ -20,9 +20,11 @@ print(modules)
 
 for module in modules:
     # cleanup previous run
-    filesToRemove = [f for f in os.listdir('output')]
-    for f in filesToRemove:
-        os.remove(os.path.join(BASE_OUTPUT_DIRECTORY, f))
+    os.chdir(basedir + '/s/synthea')
+    if (isdir('output')):
+        filesToRemove = [f for f in os.listdir('output')]
+        for f in filesToRemove:
+            os.remove(os.path.join(BASE_OUTPUT_DIRECTORY, f))
     # run synthea
     os.system("./run_synthea -p 100 -m " + module + ' Uusimaa')
     # run synthea->omop 5.3.1
