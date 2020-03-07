@@ -18,12 +18,17 @@ for file in files:
 print(modules)    
 
 for module in modules:
-    # cleanup previous run
+    # cleanup previous synthea run
     os.chdir(basedir + '/s/synthea')
     if (isdir('output')):
-        filesToRemove = [f for f in os.listdir('output')]
-        for f in filesToRemove:
-            os.remove(os.path.join('output', f))
+        if (isdir('output/csv')):
+            filesToRemove = [f for f in os.listdir('output/csv')]
+            for f in filesToRemove:
+                os.remove(os.path.join('output/csv', f))
+        if (isdir('output/fhir')):
+            filesToRemove = [f for f in os.listdir('output/fhir')]
+            for f in filesToRemove:
+                os.remove(os.path.join('output/fhir', f))
     # run synthea
     os.system("./run_synthea -p 100 -m " + module + ' Uusimaa')
     # run synthea->omop 5.3.1
