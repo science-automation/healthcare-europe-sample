@@ -46,12 +46,13 @@ for module in modules:
     #python synthea_omop.py
     # zip up omop output
     os.chdir(basedir + '/s/ETL-Synthea-Python/output')
-    os.system("zip ../" + module + "_531.zip *.csv")
+    os.system("zip ../" + module + "_omop_531.zip *.csv")
+    os.system("zip ../" + module + "_omop_6.zip *.csv")
     # zip up synthea output
     os.chdir(basedir + '/s/synthea/output/csv')
-    os.system("zip ../" + module + "_csv.zip *.csv")
+    os.system("zip ../" + module + "_synthea_csv.zip *.csv")
     os.chdir(basedir + '/s/synthea/output/fhir')
-    os.system("zip ../" + module + "_fhir.zip *.csv")
+    os.system("zip ../" + module + "_synthea_fhir.zip *.csv")
     # write the links for this module
     synthea_fhir = "[synthea fhir](https://github.com/science-automation/healthcare-europe-sample/blob/fi/fi/" + module + "_synthea_fhir.zip)"
     synthea_csv = "[synthea csv](https://github.com/science-automation/healthcare-europe-sample/blob/fi/fi/" + module + "_synthea_csv.zip)"
