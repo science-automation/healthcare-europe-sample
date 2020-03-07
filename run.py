@@ -25,7 +25,8 @@ os.mkdir(basedir + '/s/synthea/output')
 os.chdir(basedir + '/s/synthea/output')
 file = open("README.md","w") 
 file.write("# " + country.upper() + " Download Page #\n")
-file.write("You can download files by selecting the link\n\n")
+file.write("Sample healthcare data in format fhir, omop and synthea.\n\n")
+file.write("Each dataset contains the data for 100 synthetic patients with a concentration of the desribed condition\n\n")
 
 for module in modules:
     # cleanup previous synthea run
