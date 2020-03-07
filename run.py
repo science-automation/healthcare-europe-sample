@@ -8,7 +8,7 @@ if len(sys.argv) <2:
     exit(1)
 basedir = sys.argv[1]
 path = basedir + "/s/synthea/build/resources/main/modules/"
-files = [f for f in listdir(path) if isfile(join(mypath, f))]
+files = [f for f in listdir(path) if isfile(join(path, f))]
 print(files)
 # add some extra running types
 modules=[]
