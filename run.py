@@ -23,7 +23,7 @@ for module in modules:
     if (isdir('output')):
         filesToRemove = [f for f in os.listdir('output')]
         for f in filesToRemove:
-            os.remove(os.path.join(BASE_OUTPUT_DIRECTORY, f))
+            os.remove(os.path.join('output', f))
     # run synthea
     os.system("./run_synthea -p 100 -m " + module + ' Uusimaa')
     # run synthea->omop 5.3.1
