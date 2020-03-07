@@ -45,7 +45,8 @@ steps:
   clean: true
 - script: |
     pip install pandas
-  displayName: 'Install python pandas'
+    pip install dotenv
+  displayName: 'Install python modules needed'
 - script: |
     cd ${AGENT_BUILDDIRECTORY}/s/synthea
     # temp file some values in synthea.properties
