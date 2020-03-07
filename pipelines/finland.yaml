@@ -78,10 +78,13 @@ steps:
     git checkout fi
     git branch --set-upstream-to=origin/fi fi
     git pull
-    rm  ${AGENT_BUILDDIRECTORY}/s/healthcare-europe-sample/fi/*
+    git reflog expire --expire=now --all
+    git gc --aggressive --prune=now
+    git repack -a -d -l
+    rm ${AGENT_BUILDDIRECTORY}/s/healthcare-europe-sample/fi/*
     cd ${AGENT_BUILDDIRECTORY}/s/synthea
     cp output/*.zip ${AGENT_BUILDDIRECTORY}/s/healthcare-europe-sample/fi
-    cp output/README.md  ${AGENT_BUILDDIRECTORY}/s/healthcare-europe-sample/fi
+    cp output/README.md  ${AGENT_BUILDDIRECTORY}/s/healthcare-europe-sample
     cd ${AGENT_BUILDDIRECTORY}/s/ETL-Synthea-Python
     cp *.zip ${AGENT_BUILDDIRECTORY}/s/healthcare-europe-sample/fi
     cd ${AGENT_BUILDDIRECTORY}/s/healthcare-europe-sample
