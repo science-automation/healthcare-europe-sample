@@ -45,7 +45,7 @@ steps:
   clean: true
 - script: |
     pip install pandas
-  displayName: 'Install python pandas
+  displayName: 'Install python pandas'
 - script: |
     cd ${AGENT_BUILDDIRECTORY}/s/synthea
     # temp file some values in synthea.properties
