@@ -3,6 +3,7 @@ import sys
 
 if len(sys.argv) <2:
     print("BASEDIR should be set")
+    exit(1)
 basedir = sys.argv[1]
 path = basedir + "/s/synthea/build/resources/main/modules/"
 files = [f for f in listdir(path) if isfile(join(mypath, f))]
@@ -25,7 +26,6 @@ for module in modules:
     # run synthea->omop 5.3.1
     os.chdir(basedir + '/s/ETL-Synthea-Python/python_etl')
     #export CDM_VERSION=531
-    python synthea_omop.py
     os.system("python synthea_omop.py")
     # run synthea->omop 6
     #export CDM_VERSION=6
