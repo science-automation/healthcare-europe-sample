@@ -68,7 +68,7 @@ steps:
   displayName: 'Prepare Synthea to OMOP for country'
 - script: |
     cd ${AGENT_BUILDDIRECTORY}/s/healthcare-europe-sample
-    python ./run.py ${AGENT_BUILDDIRECTORY}
+    python ./run.py ${AGENT_BUILDDIRECTORY} fi
   displayName: 'Run Synthea, Synthea->OMOP 5.3, Synthea->OMOP 6 for country'
 - script: |
     mkdir -p ${AGENT_BUILDDIRECTORY}/s/healthcare-europe-sample/fi

@@ -3,10 +3,11 @@ from os import listdir
 from os.path import isdir, isfile, join
 import sys
 
-if len(sys.argv) <2:
-    print("BASEDIR should be set")
+if len(sys.argv) <3:
+    print("BASEDIR and country should be set")
     exit(1)
 basedir = sys.argv[1]
+country  = sys.argv[2]
 path = basedir + "/s/synthea/build/resources/main/modules/"
 files = [f for f in listdir(path) if isfile(join(path, f))]
 # add some extra running types
@@ -23,7 +24,7 @@ print(modules)
 os.mkdir(basedir + '/s/synthea/output')
 os.chdir(basedir + '/s/synthea/output')
 file = open("README.md","w") 
-file.write("# Country Download Page #\n")
+file.write("# " + country + " Download Page #\n")
 file.write("You can download files by selecting the link\n\n")
 
 for module in modules:
@@ -58,9 +59,9 @@ for module in modules:
     os.chdir(basedir + '/s/synthea/output/fhir')
     os.system("zip ../" + module + "_synthea_fhir.zip *.csv")
     # write the links for this module
-    synthea_fhir = "[[synthea fhir](https://github.com/science-automation/healthcare-europe-sample/raw/fi/fi/" + module + "_synthea_fhir.zip)]"
-    synthea_csv = "[[synthea csv](https://github.com/science-automation/healthcare-europe-sample/raw/fi/fi/" + module + "_synthea_csv.zip)]"
-    omop_cdm531 = "[[OMOP 5.3.1](https://github.com/science-automation/healthcare-europe-sample/raw/fi/fi/" + module + "_omop_531.zip)]"
-    omop_cdm6 = "[[OMOP 6](https://github.com/science-automation/healthcare-europe-sample/raw/fi/fi/" + module + "_omop_6.zip)]"
+    synthea_fhir = "[[synthea fhir](https://github.com/science-automation/healthcare-europe-sample/raw/" + country + "/" + country + "/" + module + "_synthea_fhir.zip)]"
+    synthea_csv = "[[synthea csv](https://github.com/science-automation/healthcare-europe-sample/raw/" + country + "/" + country + "/" + module + "_synthea_csv.zip)]"
+    omop_cdm531 = "[[OMOP 5.3.1](https://github.com/science-automation/healthcare-europe-sample/raw/" + country + "/" + country + "/" + module + "_omop_531.zip)]"
+    omop_cdm6 = "[[OMOP 6](https://github.com/science-automation/healthcare-europe-sample/raw/" + country + "/" + country "/" + module + "_omop_6.zip)]"
     file.write(module + ": " + synthea_fhir + synthea_csv + omop_cdm531 + omop_cdm6 + "\n\n")
 file.close()
