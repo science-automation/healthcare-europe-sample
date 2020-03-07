@@ -45,7 +45,7 @@ steps:
   clean: true
 - script: |
     pip install pandas
-    pip install dotenv
+    pip install python-dotenv
   displayName: 'Install python modules needed'
 - script: |
     cd ${AGENT_BUILDDIRECTORY}/s/synthea
