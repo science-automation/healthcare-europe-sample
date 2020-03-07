@@ -17,9 +17,9 @@ Hungary: [ Download Page ](https://github.com/science-automation/healthcare-euro
 
 Finland: [ Download Page ](https://github.com/science-automation/healthcare-europe-sample/tree/FI) [![Finland](https://dev.azure.com/shambergerm/HealthcareEuropeSample/_apis/build/status/Finland?branchName=master)](https://dev.azure.com/shambergerm/HealthcareEuropeSample/_build/latest?definitionId=3&branchName=master)
 
-Nethrelands: [ Download Page ](https://github.com/science-automation/healthcare-europe-sample/tree/NL) [![Nethrelands](https://dev.azure.com/shambergerm/HealthcareEuropeSample/_apis/build/status/Nethrelands?branchName=master)](https://dev.azure.com/shambergerm/HealthcareEuropeSample/_build/latest?definitionId=3&branchName=master)
+Netherlands: [ Download Page ](https://github.com/science-automation/healthcare-europe-sample/tree/NL) [![Netherlands](https://dev.azure.com/shambergerm/HealthcareEuropeSample/_apis/build/status/Netherlands?branchName=master)](https://dev.azure.com/shambergerm/HealthcareEuropeSample/_build/latest?definitionId=3&branchName=master)
 
-: [ Download Page ](https://github.com/science-automation/healthcare-europe-sample/tree/PT) [![](https://dev.azure.com/shambergerm/HealthcareEuropeSample/_apis/build/status/?branchName=master)](https://dev.azure.com/shambergerm/HealthcareEuropeSample/_build/latest?definitionId=3&branchName=master)
+Portugal: [ Download Page ](https://github.com/science-automation/healthcare-europe-sample/tree/PT) [![Portugal](https://dev.azure.com/shambergerm/HealthcareEuropeSample/_apis/build/status/Portugal?branchName=master)](https://dev.azure.com/shambergerm/HealthcareEuropeSample/_build/latest?definitionId=3&branchName=master)
 
 Norway: [ Download Page ](https://github.com/science-automation/healthcare-europe-sample/tree/NO) [![Norway](https://dev.azure.com/shambergerm/HealthcareEuropeSample/_apis/build/status/Norway?branchName=master)](https://dev.azure.com/shambergerm/HealthcareEuropeSample/_build/latest?definitionId=3&branchName=master)
 
