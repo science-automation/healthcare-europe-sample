@@ -9,7 +9,6 @@ if len(sys.argv) <2:
 basedir = sys.argv[1]
 path = basedir + "/s/synthea/build/resources/main/modules/"
 files = [f for f in listdir(path) if isfile(join(path, f))]
-print(files)
 # add some extra running types
 modules=[]
 #modules.append('*')
@@ -36,7 +35,7 @@ for module in modules:
     #cd $BASEDIR/s/ETL-Synthea-Python/python_etl
     #python synthea_omop.py
     # zip up omop output
-    os.chdir(basedir + '/s/ETL-Synthea-Python/python_etl/output')
+    os.chdir(basedir + '/s/ETL-Synthea-Python/output')
     os.system("zip ../" + module + "_531.zip *.csv")
     # zip up synthea output
     os.chdir(basedir + '/s/synthea/output/csv')

@@ -80,6 +80,8 @@ steps:
 #    git pull
 #    cd ${AGENT_BUILDDIRECTORY}/s/synthea
 #    cp output/*.zip ${AGENT_BUILDDIRECTORY}/s/healthcare-europe-sample/fi
+#    cd ${AGENT_BUILDDIRECTORY}/s/ETL-Synthea-Python
+#    cp *.zip ${AGENT_BUILDDIRECTORY}/s/healthcare-europe-sample/fi
 #    cd ${AGENT_BUILDDIRECTORY}/s/healthcare-europe-sample
 #    git add .
 #    git commit -m "generated from automation [skip ci]"
