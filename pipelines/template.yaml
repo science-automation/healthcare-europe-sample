@@ -12,7 +12,7 @@ resources:
     - repository: synthea-international
       type: github
       endpoint: science-automation
-      name: synthetichealth/synthea-international
+      name: science-automation/synthea-international
     - repository: healthcare-europe-sample-storage
       type: github
       endpoint: science-automation
@@ -49,13 +49,7 @@ steps:
   displayName: 'Install python modules needed'
 - script: |
     cd ${AGENT_BUILDDIRECTORY}/s/synthea
-    # temp file some values in synthea.properties
-    echo "exporter.encoding = UTF-8" >> ../synthea-international/fi/src/main/resources/synthea.properties
-    sed -i 's/exporter.fhir.export = false/exporter.fhir.export = true/g'../synthea-international/fi/src/main/resources/synthea.properties
-    sed -i 's/exporter.hospital.fhir.export = false/exporter.hospital.fhir.export = true/g' ../synthea-international/fi/src/main/resources/synthea.properties
-    sed -i 's/exporter.fhir.transaction_bundle = false/exporter.fhir.transaction_bundle = true/g' ../synthea-international/fi/src/main/resources/synthea.properties
-    sed -i 's/exporter.practitioner.fhir.export = false/exporter.practitioner.fhir.export = true/g' ../synthea-international/fi/src/main/resources/synthea.properties
-    cp -R ../synthea-international/fi/* .
+    cp -R ../synthea-international/$COUNTRY/* .
     ./gradlew build -x test
   displayName: 'Build Synthea for country'
 - script: |
@@ -63,12 +57,13 @@ steps:
     echo "BASE_SYNTHEA_INPUT_DIRECTORY=${AGENT_BUILDDIRECTORY}/s/synthea/output/csv" > .env
     echo "BASE_OMOP_INPUT_DIRECTORY=${AGENT_BUILDDIRECTORY}/s/ETL-Synthea-Python/vocab/" >> .env
     echo "BASE_OUTPUT_DIRECTORY=${AGENT_BUILDDIRECTORY}/s/ETL-Synthea-Python/output" >> .env
-    echo "INPUT_CHUNK_SIZE=100000000" >> .env
+    echo "CDM_VERSION=5" >> .env
+    echo "INPUT_CHUNK_SIZE=100000" >> .env
     echo "COUNTER_FILE=.counter" >> .env
   displayName: 'Prepare Synthea to OMOP for country'
 - script: |
     cd ${AGENT_BUILDDIRECTORY}/s/healthcare-europe-sample
-    python ./run.py ${AGENT_BUILDDIRECTORY} $COUNTRY
+    python ./run.py ${AGENT_BUILDDIRECTORY} $COUNTRY $REGION
   displayName: 'Run Synthea, Synthea->OMOP 5.3, Synthea->OMOP 6 for country'
 - script: |
     mkdir -p ${AGENT_BUILDDIRECTORY}/s/healthcare-europe-sample/fi

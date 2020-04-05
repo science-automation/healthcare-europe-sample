@@ -3,11 +3,12 @@ from os import listdir
 from os.path import isdir, isfile, join
 import sys
 
-if len(sys.argv) <3:
+if len(sys.argv) < 4:
     print("BASEDIR and country should be set")
     exit(1)
 basedir = sys.argv[1]
-country  = sys.argv[2]
+country = sys.argv[2]
+region = sys.argv[3]
 path = basedir + "/s/synthea/build/resources/main/modules/"
 files = [f for f in listdir(path) if isfile(join(path, f))]
 # add some extra running types
@@ -41,18 +42,18 @@ for module in modules:
             for f in filesToRemove:
                 os.remove(os.path.join('output/fhir', f))
     # run synthea
-    os.system("./run_synthea -p 100 -m " + module + ' Uusimaa')
+    os.system("./run_synthea -p 100 -m " + module + ' ' + region)
     # run synthea->omop 5.3.1
     os.chdir(basedir + '/s/ETL-Synthea-Python/python_etl')
-    #export CDM_VERSION=531
     os.system("python synthea_omop.py")
-    # run synthea->omop 6
-    #export CDM_VERSION=6
-    #cd $BASEDIR/s/ETL-Synthea-Python/python_etl
-    #python synthea_omop.py
-    # zip up omop output
     os.chdir(basedir + '/s/ETL-Synthea-Python/output')
     os.system("zip ../" + module + "_omop_531.zip *.csv")
+    # run synthea->omop 6
+    ${AGENT_BUILDDIRECTORY}/s/ETL-Synthea-Python/python_etl
+    os.chdir(basedir + '/s/ETL-Synthea-Python/python_etl')
+    os.system("sed -i 's/CDM_VERSION=5/CDM_VERSION=6/g' .env")
+    os.system("python synthea_omop.py")
+    os.chdir(basedir + '/s/ETL-Synthea-Python/output')
     os.system("zip ../" + module + "_omop_6.zip *.csv")
     # zip up synthea output
     os.chdir(basedir + '/s/synthea/output/csv')
