@@ -49,7 +49,6 @@ for module in modules:
     os.chdir(basedir + '/s/ETL-Synthea-Python/output')
     os.system("zip ../" + module + "_omop_531.zip *.csv")
     # run synthea->omop 6
-    ${AGENT_BUILDDIRECTORY}/s/ETL-Synthea-Python/python_etl
     os.chdir(basedir + '/s/ETL-Synthea-Python/python_etl')
     os.system("sed -i 's/CDM_VERSION=5/CDM_VERSION=6/g' .env")
     os.system("python synthea_omop.py")
