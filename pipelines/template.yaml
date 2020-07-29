@@ -13,10 +13,6 @@ resources:
       type: github
       endpoint: science-automation
       name: science-automation/synthea-international
-    - repository: healthcare-europe-sample-storage
-      type: github
-      endpoint: science-automation
-      name: science-automation/healthcare-europe-sample-storage
     - repository: ETL-Synthea-Python
       type: github
       endpoint: science-automation
@@ -35,9 +31,6 @@ steps:
   fetchDepth: 1
   clean: true
 - checkout: synthea-international
-  fetchDepth: 1
-  clean: true
-- checkout: healthcare-europe-sample-storage
   fetchDepth: 1
   clean: true
 - checkout: ETL-Synthea-Python
